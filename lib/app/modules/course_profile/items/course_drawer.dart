@@ -242,6 +242,7 @@ class _CourseDrawerState extends State<CourseDrawer> {
               color: isSelected ? kSecondaryColor : kOnPrimary,
             ),
           ),
+
           getWidthSpace(10)
         ]),
       ),
