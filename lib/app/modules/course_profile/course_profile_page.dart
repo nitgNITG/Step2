@@ -18,6 +18,7 @@ import '../../core/data/models/my_course.dart';
 import '../../core/data/shared_preferences/helper_funcs.dart';
 import '../../utils/helper_funcs.dart';
 import '../../widgets/app_bars.dart';
+import '../home/main_app_controller.dart';
 
 class CourseProfilePage extends StatefulWidget {
   const CourseProfilePage({super.key, this.myCourse, this.course});
@@ -32,6 +33,8 @@ class CourseProfilePage extends StatefulWidget {
 class _CourseProfilePageState extends State<CourseProfilePage>
     with TickerProviderStateMixin {
   late final CourseProfileController controller;
+  final MainAppController controller1 = MainAppController();
+
 
   @override
   void initState() {
@@ -43,6 +46,7 @@ class _CourseProfilePageState extends State<CourseProfilePage>
         showMyDialog();
       }
     });
+    controller1.getWhatsAppPhone();
     super.initState();
   }
 
@@ -105,7 +109,7 @@ class _CourseProfilePageState extends State<CourseProfilePage>
                             SvgPicture.asset("assets/images/whatsapp_ic.svg"),
                       ),
                     ).onTap(() {                                                         /// فانكشن الواتساب
-                      contactUsWhatsapp();
+                      contactUsWhatsapp(controller1.phone);
                     }),
               ],
             ),

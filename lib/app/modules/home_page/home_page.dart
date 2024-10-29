@@ -20,6 +20,7 @@ import '../../core/data/shared_preferences/helper_funcs.dart';
 import '../../core/data/shared_preferences/sharedpreference_service.dart';
 import '../../utils/helper_funcs.dart';
 import '../global_used_widgets/about_academy_teachers.dart';
+import '../home/main_app_controller.dart';
 import '../login/login_page.dart';
 import '../splash/splash_page.dart';
 
@@ -35,6 +36,8 @@ class _HomePageState extends State<HomePage> {
   final ScrollController scrollController = ScrollController();
   late final VideoPlayerController videoPlayerController;
   late final ChewieController cheweiConrtroller;
+  final MainAppController controller1 = MainAppController();
+
 
   @override
   void initState() {
@@ -47,9 +50,12 @@ class _HomePageState extends State<HomePage> {
       controller.getAboutAcademyFreeLessons(),
       controller.getCategories(),
 
+
     ]).then((value) {
+
       setState(() {});
     });
+
 
     super.initState();
   }
@@ -266,7 +272,8 @@ class _HomePageState extends State<HomePage> {
                                   color: Colors.cyan,
                                   size: 18,
                                 ).onTap(() {
-                                  contactUsWhatsapp();
+                                  contactUsWhatsapp(controller1
+                                  .phone);
                                 }),
                               ],
                             ),
@@ -622,6 +629,16 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text(
               title,
+              style: TextStyle(
+                color: getThemeData(context).colorScheme.onBackground,
+                height: 1.8,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                decorationColor:kPrimaryColor,
+              ),
+            ), // about academy
+            Text(
+              controller.phone,
               style: TextStyle(
                 color: getThemeData(context).colorScheme.onBackground,
                 height: 1.8,

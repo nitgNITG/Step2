@@ -1,6 +1,6 @@
 import 'package:step/app/modules/splash/splash_controller.dart';
 import 'package:step/app/utils/helper_funcs.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -18,17 +18,17 @@ class _SplashPageState extends State<SplashPage> {
     controller.navigate(context);
   }
 
-  requestNotificationPermission() {
-    FirebaseMessaging.instance.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
-  }
+  // requestNotificationPermission() {
+  //   FirebaseMessaging.instance.requestPermission(
+  //     alert: true,
+  //     announcement: false,
+  //     badge: true,
+  //     carPlay: false,
+  //     criticalAlert: false,
+  //     provisional: false,
+  //     sound: true,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -73,6 +73,7 @@ class _CourseContentState extends State<CourseContent> {
           Column(
             children:
                 section.modules.map((e) => ModuleItem(module: e)).toList(),
+
           ),
         getHeightSpace(10)
       ],

@@ -10,17 +10,30 @@ import '../../../utils/helper_funcs.dart';
 import '../../../utils/routing_utils.dart';
 import '../../../widgets/form_fields.dart';
 import '../../../widgets/texts.dart';
+import '../../home/main_app_controller.dart';
 import '../../register/create_account.dart';
 import '../login_controller.dart';
 
-class FormBody extends StatelessWidget {
-  const FormBody({
+class FormBody extends StatefulWidget {
+   FormBody({
     super.key,
     required this.controller,
   });
 
   final LoginController controller;
 
+  @override
+  State<FormBody> createState() => _FormBodyState();
+
+}
+class _FormBodyState extends State<FormBody> {
+  final MainAppController controller1 = MainAppController();
+@override
+  void initState() {
+  controller1.getWhatsAppPhone();
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -92,7 +105,7 @@ class FormBody extends StatelessWidget {
                     ),
                     child: TextFormFieldWidget(
                       title: getL10(context).email,
-                      controller: controller.emailController,
+                      controller: widget.controller.emailController,
                       titleColor: kOnPrimary,
                       heightOfBoty: 35,
                       showCounter: false,
@@ -110,7 +123,7 @@ class FormBody extends StatelessWidget {
                     ),
                     child: PasswordFormField(
                       title: getL10(context).password,
-                      controller: controller.passwordController,
+                      controller: widget.controller.passwordController,
                       titleColor: kOnPrimary,
                       bodyHeight: 40,
                     ),
@@ -148,7 +161,7 @@ class FormBody extends StatelessWidget {
                   // const Spacer(),
 
 
-                  LoginButton(controller: controller),                          /// تسجيل الدخول
+                  LoginButton(controller: widget.controller),                          /// تسجيل الدخول
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: getScreenSize(context).width * 0.13,
@@ -169,7 +182,7 @@ class FormBody extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        controller.loginAsGuest(context);
+                        widget.controller.loginAsGuest(context);
                       },
                       child: Text(
                         getL10(context).loginAsGuest,
@@ -225,7 +238,7 @@ class FormBody extends StatelessWidget {
                       SvgPicture.asset("assets/images/whatsapp_ic.svg"),
                     ),
                   ).onTap(() {                                           /// فانكشن الواتساب
-                    contactUsWhatsapp();
+                    contactUsWhatsapp(controller1.phone);
                   }),
 
                   /// allrights reserved text                                  /// كلمه حقوق الطبع والنشر محفوظه
@@ -237,7 +250,7 @@ class FormBody extends StatelessWidget {
             SizedBox(
               height: getScreenHeight(context) * 0.171,
               child: ValueListenableBuilder(
-                  valueListenable: controller.allRightsText,
+                  valueListenable: widget.controller.allRightsText,
                   builder: (context, allRights, child) {
                     return Column(
                       children: [
@@ -248,7 +261,7 @@ class FormBody extends StatelessWidget {
                             getNormalText(allRights, context,
                                 color:Colors.black, size: 10),
                             getNormalText(
-                              " ${controller.allRightsYear}",
+                              " ${widget.controller.allRightsYear}",
                               context,
                               color:Colors.black,
                               size: 10,
@@ -261,23 +274,23 @@ class FormBody extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               getNormalText(
-                                  controller.allRightsCompanyName, context,
+                                  widget.controller.allRightsCompanyName, context,
                                   color:Colors.black, size: 10),
                               Row(children: [
                                 const SizedBox(width: 126,),
                                 getNormalText(
-                                    controller.allRightsCompanyNameEnglish,
+                                    widget.controller.allRightsCompanyNameEnglish,
                                     context,
                                     color:Colors.black,
                                     size: 10),
                                 const SizedBox(width: 5,),
                                 getNormalText(
-                                  controller.allRightsLink,
+                                  widget.controller.allRightsLink,
                                   context,
                                   color:Colors.black,
                                   size: 10,
                                 ).onTap(() {
-                                  launchURL(controller.allRightsLink);
+                                  launchURL(widget.controller.allRightsLink);
                                 }),
 
                               ]),

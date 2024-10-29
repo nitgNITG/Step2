@@ -14,11 +14,23 @@ import 'package:step/app/utils/helper_funcs.dart';
 
 import '../../widgets/texts.dart';
 
-class HomeMainParentPage extends StatelessWidget {
+class HomeMainParentPage extends StatefulWidget {
   HomeMainParentPage({super.key, this.connectivityResult});
 
-  final MainAppController controller = MainAppController();
   final ConnectivityResult? connectivityResult;
+
+  @override
+  State<HomeMainParentPage> createState() => _HomeMainParentPageState();
+}
+
+class _HomeMainParentPageState extends State<HomeMainParentPage> {
+  final MainAppController controller = MainAppController();
+  @override
+  void initState() {
+    controller.getWhatsAppPhone();
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +146,7 @@ class HomeMainParentPage extends StatelessWidget {
       canPop: false,
       child: BaseView<MainAppController>(
         injectedObject: controller,
-        connectivityResult: connectivityResult,
+        connectivityResult: widget.connectivityResult,
         child: Container(
           color: getThemeData(context).colorScheme.background,
           child: Stack(
@@ -149,7 +161,7 @@ class HomeMainParentPage extends StatelessWidget {
                       return SvgPicture.asset("assets/images/whatsapp_ic.svg")
                           .onTap(
                         () {
-                          contactUsWhatsapp();
+                          contactUsWhatsapp(controller.phone);
                         },
                       );
                     } else {

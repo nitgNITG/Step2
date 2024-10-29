@@ -12,10 +12,18 @@ saveToSharedPref(response) async {
   return;
 }
 
-contactUsWhatsapp() {
+// contactUsWhatsapp() {
+//   launchUrl(
+//     Uri.parse(
+//       "https://wa.me/+201067802534",
+//     ),
+//     mode: LaunchMode.externalApplication,
+//   );
+// }
+contactUsWhatsapp(phone) {
   launchUrl(
     Uri.parse(
-      "https://wa.me/+201067802534",
+      "https://wa.me/$phone",
     ),
     mode: LaunchMode.externalApplication,
   );

@@ -1,5 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get_it/get_it.dart';
@@ -12,18 +11,14 @@ import 'package:step/global_providers/localization_provider.dart';
 //ssssssssssssssssssssssssssssssssssssssssssssssss78
 import 'app/modules/home_page/home_controller.dart';
 import 'app/modules/student_profile/profile_page.dart';
-import 'firebase_options.dart';
+
 import 'global_providers/theme_provider.dart';
 
 /// created with respect by Mohammed Monem , mohamed essam in  nitg company
 ///0000
 
 @pragma('vm:entry-point')
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in the background, such as Firestore,
-  // make sure you call `initializeApp` before using other Firebase services.
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-}
+
 
 void main() async {
   // Provider.debugCheckInvalidValueType = null;

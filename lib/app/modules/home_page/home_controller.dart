@@ -22,6 +22,8 @@ class HomeController extends BaseController {
   var categoriesState = ValueNotifier(AppViewState.busy);
 
   String aboutAcademyDescription = "";
+  String phone = "";
+
 
   Future<void> getCategories() async {
     try {
@@ -87,6 +89,7 @@ class HomeController extends BaseController {
           .toList();
 
       aboutAcademyDescription = response['about_1_block']['text'];
+      phone = response['phonenumber'];
       changeViewState(AppViewState.idle);
       aboutAcademyState.value = AppViewState.idle;
     } catch (e) {
