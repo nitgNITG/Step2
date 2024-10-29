@@ -53,10 +53,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('../app/step.jks')
-            storePassword "123456"
+            storeFile file('../app/upload-keystore.jks')
+            storePassword "Eslam@123"
             keyAlias "upload"
-            keyPassword "123456"
+            keyPassword "Eslam@123"
         }
     }
 

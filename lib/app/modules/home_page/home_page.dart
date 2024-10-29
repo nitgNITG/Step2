@@ -637,16 +637,7 @@ class _HomePageState extends State<HomePage> {
                 decorationColor:kPrimaryColor,
               ),
             ), // about academy
-            Text(
-              controller.phone,
-              style: TextStyle(
-                color: getThemeData(context).colorScheme.onBackground,
-                height: 1.8,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                decorationColor:kPrimaryColor,
-              ),
-            ), // about academy
+           // about academy
             Container(
               color: Color(0xff001B52),
               height: 3,
