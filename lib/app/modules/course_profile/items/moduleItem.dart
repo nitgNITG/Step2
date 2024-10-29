@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:step/app/core/constants_and_enums/static_data.dart';
 import 'package:step/app/core/data/models/course_details.dart';
@@ -61,7 +64,7 @@ class ModuleItem extends StatelessWidget {
           );
         } else */{
           final token = controller.getLoggedUser().token;
-
+          if(module.avail==true)
           Navigator.push(
             context,
             routeToPage(
@@ -71,8 +74,8 @@ class ModuleItem extends StatelessWidget {
               ),
             ),
           );
-          print(module);
-          print("--------------------");
+          if(module.avail==false) showMyDialog(context,module.avail_message);
+
         }
       } else {
         showSnackBar(
@@ -94,4 +97,65 @@ class ModuleItem extends StatelessWidget {
     else
       return Icons.web;
   }
+}
+showMyDialog(context,message) {
+  showDialog(
+    context: context,
+    builder: (context) => BackdropFilter(
+      filter: ImageFilter.blur(
+        sigmaX: 2.0,
+        sigmaY: 1.5,
+      ),
+      child: AlertDialog(
+        backgroundColor:   Color(0xff00FFFF),
+        shape:
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Spacer(),
+            getNormalText(
+              getL10(context).notes,
+              context,
+              color: getThemeData(context).colorScheme.onBackground,
+              weight: FontWeight.bold,
+              size: 22,
+            ),
+            const Spacer(),
+            Container(
+              child: SvgPicture.asset(
+                "assets/images/close_ic.svg",
+              ).onTap(() {
+                Navigator.pop(context);
+
+              }),
+            )
+          ],
+        ),
+        titlePadding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 10,
+        ),
+        actionsAlignment: MainAxisAlignment.start,
+        content: SizedBox(
+          height: getScreenHeight(context) * 0.15,
+          child: Column(
+            children: [
+              getNormalText(
+                "$message",
+                context,
+                // color: kOnPrimary,
+              ),
+              const Spacer(),
+
+            ],
+          ),
+        ),
+      ),
+    ),
+    barrierDismissible: false,
+    barrierColor: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.15),
+
+  );
 }

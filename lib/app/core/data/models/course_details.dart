@@ -131,6 +131,7 @@ class Module {
   final bool? noviewlink;
   final String? paid;
   final bool? avail;
+  final String? avail_message;
   final String? quizType;
   final String resourceType;
   final String? pageUrl;
@@ -155,6 +156,7 @@ class Module {
       required this.noviewlink,
       required this.paid,
       required this.avail,
+      required this.avail_message,
       required this.quizType,
       required this.resourceType,
       required this.pageUrl,
@@ -180,6 +182,7 @@ class Module {
       noviewlink: i["noviewlink"],
       paid: i["paid"],
       avail: i["avail"],
+      avail_message: i['avail_message'],
       quizType: i["quiz_type"],
       resourceType: i["resource_type"],
       pageUrl: i["page_url"],

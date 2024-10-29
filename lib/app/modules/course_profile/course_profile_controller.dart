@@ -148,6 +148,7 @@ class CourseProfileController extends BaseController {
           "${StaticData.baseUrl}/academyApi/json.php?function=course_content_mobile&courseID=$courseId");
       if (response['data'] != null) {
         courseDetails = CourseDetails.fromJson(response['data']);
+        print(response['data']);
         changeViewState(AppViewState.idle);
 
         setIsStudentEnrolledToCourse();
