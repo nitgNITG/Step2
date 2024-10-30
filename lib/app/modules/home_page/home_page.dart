@@ -55,6 +55,7 @@ class _HomePageState extends State<HomePage> {
 
       setState(() {});
     });
+    controller1.getWhatsAppPhone();
 
 
     super.initState();
